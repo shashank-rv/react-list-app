@@ -5,60 +5,25 @@ import { useState,useEffect } from 'react';
 
 function App() {
 
-  const fetchCustomers = async() => {
+  const test = [];
 
-      const res = await fetch('http://localhost:8000/test')
-      const data = await res.json()
+  const x = fetch('http://localhost:8000/test')
+              .then(res => res.json())
+              .then(data => {
 
-      //const data1 = JSON.parse(data)
+                      const data1 = JSON.parse(data);
 
-      //const data2 = data1.map((i) => {return i.name})
+                      //data1.map((i) => console.log(i.name))
 
-      console.log(data)
-      return data
+                      data1.map((i) => test.push(i.name))
 
-    }
-
-    fetchCustomers();
-
-
-  // const [tasks,setTasks] = useState([])
+                      //console.log(data);
+                    })
 
 
-
-  // useEffect(() => {
-
-  //   const getTasks = async() => {
-
-  //     const tasksFromServer = await fecthTasks()
-  //     setTasks(tasksFromServer)
-
-  //   }
-
-  //   getTasks()
-
-  // },[])
-
-  // const fecthTasks = async() => {
-
-  //   const res = await fetch('http://localhost:5000/tasks')
-  //   const data = await res.json()
-
-  //   return data
+  //console.log(test);
 
 
-  // }
-
-  
-  //fetchCustomers();
-
-  //console.log(x);
-
-  //  const x = [{"id": 1, "name": "shashank"}, {"id": 2, "name": "blah"}]
-
-  //  x.map((i) => {console.log(i)})
-
-  //fetchCustomers();
   
   return (
     <Container className="p-2" fluid>
@@ -69,7 +34,6 @@ function App() {
             <Row className="p-2 bg-light">
               Customers
               <Customer title = "hello" />
-              <h1>{fetchCustomers()}</h1>
             </Row>
 
             {/* Second List */}
